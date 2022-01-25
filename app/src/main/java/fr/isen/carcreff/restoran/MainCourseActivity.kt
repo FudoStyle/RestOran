@@ -33,8 +33,12 @@ class MainCourseActivity : AppCompatActivity() {
         // This loop will create 20 Views containing
         // the image with the count of view
 
-            data.add(ItemsViewModel(R.drawable.cook, "Item " + 1))
-            data.add(ItemsViewModel(R.drawable.berries, "Item " + 2))
+        data.add(ItemsViewModel(R.drawable.cook, "Item " + 1))
+        data.add(ItemsViewModel(R.drawable.berries, "Item " + 2))
+        data.add(ItemsViewModel(R.drawable.berry, "Item " + 3))
+        data.add(ItemsViewModel(R.drawable.meal1, "Item " + 4))
+        data.add(ItemsViewModel(R.drawable.meal3, "Item " + 5))
+        data.add(ItemsViewModel(R.drawable.poffin, "Item " + 6))
 
 
         // This will pass the ArrayList to our Adapter
@@ -44,6 +48,7 @@ class MainCourseActivity : AppCompatActivity() {
         recyclerview.adapter = adapter
 
     }
+
 }
 
 
