@@ -4,18 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#7DFFDA"
-    android:backgroundTintMode="add"
-    tools:context=".MainActivity">
+    tools:context=".HomeActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="132dp"
+        android:layout_height="123dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/oran" />
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="173dp"
+        android:layout_width="132dp"
         android:layout_height="123dp"
+        android:layout_marginStart="299dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.456"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/oran" />
 
@@ -50,18 +60,15 @@
         android:id="@+id/textView2"
         android:layout_width="188dp"
         android:layout_height="78dp"
-        android:layout_marginStart="107dp"
-        android:layout_marginEnd="116dp"
+        android:layout_marginTop="46dp"
         android:fontFamily="@font/rancho"
         android:lineSpacingExtra="14sp"
         android:text="Rest Oran"
         android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.068" />
+        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button4"
@@ -102,21 +109,10 @@
         android:id="@+id/imageView6"
         android:layout_width="311dp"
         android:layout_height="128dp"
-        android:layout_marginTop="584dp"
+        android:layout_marginTop="544dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/berries" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="173dp"
-        android:layout_height="123dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
-        app:layout_constraintHorizontal_bias="0.575"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/oran" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

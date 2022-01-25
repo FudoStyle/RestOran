@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
-        <item>@font/</item>
-        <item>@font/black_ops_one</item>
-        <item>@font/butterfly_kids</item>
-        <item>@font/clicker_script</item>
         <item>@font/rancho</item>
-        <item>@font/rochester</item>
     </array>
 </resources>
