@@ -1,47 +1,51 @@
 package fr.isen.carcreff.restoran
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import fr.isen.carcreff.restoran.databinding.ViewsDishesBinding
 
 
-class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter(private val courses: List<ItemsViewModel>, val onCourseClicked: (ItemsViewModel) -> Unit) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+
+    // Holds the views for adding it to image and text
+    class ViewHolder(binding: ViewsDishesBinding) : RecyclerView.ViewHolder(binding.root) {
+        val imageView: ImageView = binding.itemimage
+        val textView: TextView = binding.itemtext
+        val priceView: TextView = binding.itemprice
+    }
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         // inflates the card_view_design view
         // that is used to hold list item
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.views_dishes, parent, false)
+        val binding = ViewsDishesBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return ViewHolder(view)
+        return ViewHolder(binding)
     }
 
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val ItemsViewModel = mList[position]
+        val rank = courses[position]
 
-        // sets the image to the imageview from our itemHolder class
-        holder.imageView.setImageResource(ItemsViewModel.image)
+        holder.imageView.setImageResource(rank.image)
+        holder.textView.text = rank.text
+        holder.priceView.text = rank.price
 
-        // sets the text to the textview from our itemHolder class
-        holder.textView.text = ItemsViewModel.text
-
+        holder.itemView.setOnClickListener{
+            onCourseClicked(rank)
+        }
     }
 
     // return the number of the items in the list
     override fun getItemCount(): Int {
-        return mList.size
+        return courses.size
     }
 
-    // Holds the views for adding it to image and text
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.itemimage)
-        val textView: TextView = itemView.findViewById(R.id.itemtext)
-    }
 }

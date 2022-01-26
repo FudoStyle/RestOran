@@ -3,6 +3,7 @@
 
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
@@ -26,9 +27,8 @@
 
         <TextView
             android:id="@+id/itemtext"
-            android:layout_width="236dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="179dp"
+            android:layout_height="56dp"
             android:text="Item"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -37,12 +37,20 @@
 
         <TextView
             android:id="@+id/itemdetail"
-            android:layout_width="236dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="178dp"
+            android:layout_height="41dp"
             app:layout_constraintLeft_toRightOf="@id/itemimage"
             app:layout_constraintTop_toBottomOf="@id/itemtext"
             app:layout_goneMarginTop="8dp" />
+
+        <TextView
+            android:id="@+id/itemprice"
+            android:layout_width="68dp"
+            android:layout_height="71dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
