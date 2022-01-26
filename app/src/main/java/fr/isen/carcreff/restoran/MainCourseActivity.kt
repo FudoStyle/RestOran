@@ -37,6 +37,7 @@ class MainCourseActivity : AppCompatActivity() {
 
         binding.mainCourseRecycler.adapter = CustomAdapter(courses){
             val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("course",it)
             startActivity(intent)
         }
 

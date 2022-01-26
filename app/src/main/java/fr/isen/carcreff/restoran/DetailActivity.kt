@@ -2,6 +2,7 @@ package fr.isen.carcreff.restoran
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import fr.isen.carcreff.restoran.databinding.ActivityDetailBinding
 
 
@@ -10,10 +11,9 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_detail)
 
-        binding.nameCourseTitle.text = intent.getStringExtra("category_type")
+        findViewById<TextView>(R.id.nameCourseTitle).text = (intent.getSerializableExtra("course") as ItemsViewModel).text
     }
 
 
