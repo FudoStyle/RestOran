@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import fr.isen.carcreff.restoran.databinding.ViewsDishesBinding
 
 
-class CustomAdapter(private val courses: List<ItemsViewModel>, val onCourseClicked: (ItemsViewModel) -> Unit) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class FoodAdapter(private val courses: List<FoodViewModel>, val onCourseClicked: (FoodViewModel) -> Unit) : RecyclerView.Adapter<FoodAdapter.ViewHolder>() {
 
     // Holds the views for adding it to image and text
     class ViewHolder(binding: ViewsDishesBinding) : RecyclerView.ViewHolder(binding.root) {

@@ -30,12 +30,12 @@ class MainCourseActivity : AppCompatActivity() {
 
         // ArrayList of class ItemsViewModel
         val courses = listOf(
-            ItemsViewModel(R.drawable.cook,"Le cuistot", "€€€"),
-            ItemsViewModel(R.drawable.meal1,"Petit plat sympa", "12,50€")
+            FoodViewModel(R.drawable.cook,"Le cuistot", "€€€"),
+            FoodViewModel(R.drawable.meal1,"Petit plat sympa", "12,50€")
 
         )
 
-        binding.mainCourseRecycler.adapter = CustomAdapter(courses){
+        binding.mainCourseRecycler.adapter = FoodAdapter(courses){
             val intent = Intent(this, DetailActivity::class.java)
             intent.putExtra("course",it)
             startActivity(intent)
