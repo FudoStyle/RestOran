@@ -4,9 +4,19 @@ package fr.isen.carcreff.restoran
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import fr.isen.carcreff.restoran.databinding.ActivityMainCourseBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.DefaultRetryPolicy
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
+import org.json.JSONObject
+
 
 
 class MainCourseActivity : AppCompatActivity() {
@@ -17,45 +27,36 @@ class MainCourseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainCourseBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.mainCourseTitle.text = intent.getStringExtra("category_type")
-
-
-        // getting the recyclerview by its id
-
-        val recyclerview = findViewById<RecyclerView>(R.id.mainCourseRecycler)
-
-        // this creates a vertical layout Manager
-        binding.mainCourseRecycler.layoutManager = LinearLayoutManager(this)
-
-        // ArrayList of class ItemsViewModel
-        val courses = listOf(
-            FoodViewModel(R.drawable.cook,"Le cuistot", "€€€"),
-            FoodViewModel(R.drawable.meal1,"Petit plat sympa", "12,50€")
-
-        )
-
-        binding.mainCourseRecycler.adapter = FoodAdapter(courses){
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("course",it)
-            startActivity(intent)
-        }
+        val categoryType = intent.getStringExtra("category_type") ?: ""
+        binding.mainCourseTitle.text = categoryType
 
 
-
-        // This loop will create 20 Views containing
-        // the image with the count of view
-/*
-        data.add(ItemsViewModel(R.drawable.cook, "Item " + 1))
-        data.add(ItemsViewModel(R.drawable.berries, "Item " + 2))
-        data.add(ItemsViewModel(R.drawable.berry, "Item " + 3))
-        data.add(ItemsViewModel(R.drawable.meal1, "Item " + 4))
-        data.add(ItemsViewModel(R.drawable.meal3, "Item " + 5))
-        data.add(ItemsViewModel(R.drawable.poffin, "Item " + 6))
-*/
-
+        loadFoodsFromCategory(categoryType)
     }
 
+    private fun loadFoodsFromCategory(categoryType: String){
+        val url = "http://test.api.catering.bluecodegames.com/menu"
+
+        val jsonObject = JSONObject()
+        jsonObject.put("id_shop", "1")
+        val jsonRequest = JsonObjectRequest(
+            Request.Method.POST, url, jsonObject, { response ->
+                val foodResult = Gson().fromJson(response.toString(), FoodResult::class.java)
+                displayFoods(foodResult.data.firstOrNull {category -> category.name_fr == categoryType}?.items ?: listOf())
+            },{
+                Log.e("MainCourseActivity", "erreur lors de la récupération de la liste des plats")
+            })
+        Volley.newRequestQueue(this).add(jsonRequest)
+    }
+
+    private fun displayFoods(courses: List<FoodModel>) {
+        binding.mainCourseRecycler.layoutManager = LinearLayoutManager(this)
+        binding.mainCourseRecycler.adapter = FoodAdapter(courses) {
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("course", it)
+            startActivity(intent)
+        }
+    }
 
 }
 

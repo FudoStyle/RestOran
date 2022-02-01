@@ -13,7 +13,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        findViewById<TextView>(R.id.nameCourseTitle).text = (intent.getSerializableExtra("course") as FoodViewModel).text
+        findViewById<TextView>(R.id.nameCourseTitle).text = (intent.getSerializableExtra("course") as FoodModel).name_fr
     }
 
 

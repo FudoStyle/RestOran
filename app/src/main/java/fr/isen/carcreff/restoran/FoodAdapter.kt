@@ -7,15 +7,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import fr.isen.carcreff.restoran.databinding.ViewsDishesBinding
+import com.android.volley.toolbox.ImageLoader
 
+import com.android.volley.RequestQueue
+import com.squareup.picasso.Picasso
 
-class FoodAdapter(private val courses: List<FoodViewModel>, val onCourseClicked: (FoodViewModel) -> Unit) : RecyclerView.Adapter<FoodAdapter.ViewHolder>() {
+class FoodAdapter(private val courses: List<FoodModel>, val onCourseClicked: (FoodModel) -> Unit) : RecyclerView.Adapter<FoodAdapter.ViewHolder>() {
 
     // Holds the views for adding it to image and text
     class ViewHolder(binding: ViewsDishesBinding) : RecyclerView.ViewHolder(binding.root) {
-        val imageView: ImageView = binding.itemimage
+        val foodPicture: ImageView = binding.itemimage
         val textView: TextView = binding.itemtext
-        val priceView: TextView = binding.itemprice
+        val foodPrice: TextView = binding.itemprice
     }
 
     // create new views
@@ -34,9 +37,16 @@ class FoodAdapter(private val courses: List<FoodViewModel>, val onCourseClicked:
 
         val rank = courses[position]
 
-        holder.imageView.setImageResource(rank.image)
-        holder.textView.text = rank.text
-        holder.priceView.text = rank.price
+        holder.textView.text = rank.name_fr
+        //holder.foodPicture.setImageResource(rank.getFirstPicture())
+
+        Picasso.get()
+            .load(rank.getFirstPicture())
+            .error(R.drawable.meal1)
+            .placeholder(R.drawable.meal1)
+            .into(holder.foodPicture)
+
+        holder.foodPrice.text = rank.getFormattedPrice()
 
         holder.itemView.setOnClickListener{
             onCourseClicked(rank)
@@ -44,8 +54,5 @@ class FoodAdapter(private val courses: List<FoodViewModel>, val onCourseClicked:
     }
 
     // return the number of the items in the list
-    override fun getItemCount(): Int {
-        return courses.size
-    }
-
+    override fun getItemCount(): Int = courses.size
 }
