@@ -93,7 +93,11 @@ class RegisterActivity : AppCompatActivity() {
             binding.email.requestFocus()
             return false
         }
-        return true
+        if(android.util.Patterns.EMAIL_ADDRESS.matcher(binding.email.text).matches()){
+            return true
+        }
+        Toast.makeText(this,"Addresse email invalide",Toast.LENGTH_LONG).show()
+        return false
     }
 
     private fun validateAddress(): Boolean {
