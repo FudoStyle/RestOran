@@ -51,7 +51,8 @@ class RegisterActivity : AppCompatActivity() {
 
 
                     val jsonRequest = JsonObjectRequest(
-                        Request.Method.POST, url, jsonObject, { response ->
+                        Request.Method.POST, url, jsonObject,
+                        { response ->
                             var gson = Gson()
                             Log.d("", "$response")
                         }, {

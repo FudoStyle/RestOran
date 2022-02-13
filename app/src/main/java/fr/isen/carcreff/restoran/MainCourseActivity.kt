@@ -22,7 +22,6 @@ import org.json.JSONObject
 class MainCourseActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainCourseBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainCourseBinding.inflate(layoutInflater)
@@ -30,8 +29,18 @@ class MainCourseActivity : AppCompatActivity() {
         val categoryType = intent.getStringExtra("category_type") ?: ""
         binding.mainCourseTitle.text = categoryType
 
+        val intentbasket = Intent(this, ShoppingBasketActivity::class.java)
+        binding.imageshoppingbasket.setOnClickListener(){
+
+            startActivity(intentbasket)
+        }
+
 
         loadFoodsFromCategory(categoryType)
+
+        binding.back2.setOnClickListener {
+            finish()
+        }
     }
 
     private fun loadFoodsFromCategory(categoryType: String){
@@ -56,6 +65,8 @@ class MainCourseActivity : AppCompatActivity() {
             intent.putExtra("course", it)
             startActivity(intent)
         }
+
+
     }
 
 }

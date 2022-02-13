@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".DetailActivity">
 
+    <Button
+        android:id="@+id/back3"
+        android:layout_width="56dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="392dp"
+        android:backgroundTint="#EFE9E9"
+        app:icon="?attr/actionModeCloseDrawable"
+        app:iconTint="#68BAB4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nameCourseTitle" />
+
     <TextView
         android:id="@+id/nameCourseTitle"
         android:layout_width="316dp"
@@ -14,6 +26,7 @@
         android:gravity="center"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.705"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Maincourse" />
@@ -24,17 +37,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         android:text="Ajouter au panier"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/foodPhotoPager"
         android:layout_width="412dp"
         android:layout_height="278dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

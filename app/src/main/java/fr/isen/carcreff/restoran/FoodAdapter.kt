@@ -1,24 +1,26 @@
 package fr.isen.carcreff.restoran
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import fr.isen.carcreff.restoran.databinding.ViewsDishesBinding
 import com.android.volley.toolbox.ImageLoader
 
 import com.android.volley.RequestQueue
 import com.squareup.picasso.Picasso
+import fr.isen.carcreff.restoran.databinding.ViewsFoodsBinding
 
 class FoodAdapter(private val courses: List<FoodModel>, val onCourseClicked: (FoodModel) -> Unit) : RecyclerView.Adapter<FoodAdapter.ViewHolder>() {
 
     // Holds the views for adding it to image and text
-    class ViewHolder(binding: ViewsDishesBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(binding: ViewsFoodsBinding) : RecyclerView.ViewHolder(binding.root) {
         val foodPicture: ImageView = binding.itemimage
         val textView: TextView = binding.itemtext
         val foodPrice: TextView = binding.itemprice
+        val cross: ImageView = binding.cross
     }
 
     // create new views
@@ -26,7 +28,7 @@ class FoodAdapter(private val courses: List<FoodModel>, val onCourseClicked: (Fo
 
         // inflates the card_view_design view
         // that is used to hold list item
-        val binding = ViewsDishesBinding
+        val binding = ViewsFoodsBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
 
         return ViewHolder(binding)
@@ -51,6 +53,8 @@ class FoodAdapter(private val courses: List<FoodModel>, val onCourseClicked: (Fo
         holder.itemView.setOnClickListener{
             onCourseClicked(rank)
         }
+
+        holder.cross.setVisibility(View.INVISIBLE);
     }
 
     // return the number of the items in the list

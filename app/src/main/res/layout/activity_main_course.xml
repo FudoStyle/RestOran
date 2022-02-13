@@ -6,11 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".MainCourseActivity">
 
+    <Button
+        android:id="@+id/back2"
+        android:layout_width="56dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="52dp"
+        android:backgroundTint="#EFE9E9"
+        app:icon="?attr/actionModeCloseDrawable"
+        app:iconTint="#68BAB4"
+        app:layout_constraintEnd_toStartOf="@+id/imageshoppingbasket"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/mainCourseTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="124dp"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -20,10 +34,21 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mainCourseRecycler"
-        android:layout_width="415dp"
-        android:layout_height="596dp"
+        android:layout_width="416dp"
+        android:layout_height="547dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainCourseTitle" />
+
+    <ImageView
+        android:id="@+id/imageshoppingbasket"
+        android:layout_width="166dp"
+        android:layout_height="113dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/shoppingbasket" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
