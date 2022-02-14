@@ -85,17 +85,17 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="135dp"
-        android:layout_height="81dp"
-        android:layout_marginStart="138dp"
-        android:layout_marginEnd="138dp"
-        android:layout_marginBottom="64dp"
+        android:layout_width="282dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="58dp"
         android:text="Mot de passe: fruit   pour l'instant "
         android:textAlignment="center"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Connect" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
